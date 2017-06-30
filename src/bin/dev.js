@@ -5,8 +5,7 @@ import promise from 'bluebird'
 global.Promise = promise
 
 const app = new Koa()
-import routes from 'routes'
-import { host } from './config'
+import routes from '../routes'
 
 app.use((ctx, next) => {
 	return next().catch((err) => {
