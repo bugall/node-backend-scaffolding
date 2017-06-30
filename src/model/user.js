@@ -8,6 +8,11 @@ import { query } from '../lib/dbConnection'
 
 const User = {}
 User.getUser = async function(id) {
-	return await query('select * from user where userId =?', [userId])
+	return await query('SELECT * FROM user WHERE userId =?', [userId])
 };
-export default User
+
+User.createUser = async function(name, password) {
+	return await query('INSERT INTO tbl_name (name, password) VALUES(?, ?)', [name, password])
+};
+
+export { getUser, createUser }

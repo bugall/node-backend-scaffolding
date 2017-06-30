@@ -1,11 +1,9 @@
 'use strict'
 
 import Router from 'koa-router'
-import rootRouter from './index/index'
-
-console.log(rootRouter)
+import user from './user'
 const router = Router()
 
-router.use('', rootRouter.routes(), rootRouter.allowedMethods())
+router.use('', user.routes(), user.allowedMethods())
 
 export default router
