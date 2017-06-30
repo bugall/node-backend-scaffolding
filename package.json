@@ -1,0 +1,28 @@
+{
+  "name": "mocha-sinon-chai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bugall/mocha-sinon-chai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bugall/mocha-sinon-chai/issues"
+  },
+  "homepage": "https://github.com/bugall/mocha-sinon-chai#readme",
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "chai": "^4.0.2",
+    "koa": "^2.3.0",
+    "mocha": "^3.4.2",
+    "sinon": "^2.3.6"
+  }
+}
