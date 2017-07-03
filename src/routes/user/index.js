@@ -3,6 +3,7 @@ import { getUser, createUser } from '../../model/user'
 const router = Router()
 
 router.get('/:id', async function(ctx) {
+	console.log(ctx.params)
 	const userId = ctx.params.id
 	if (isNaN(userId)) {
 		throw new Error("user id format error")
@@ -15,7 +16,7 @@ router.get('/:id', async function(ctx) {
 })
 
 router.post('/', async function(ctx) {
-	const { name, password } = ctx.body
+	const { name, password } = ctx.request.body
 	if (name.length > 100 && password.length > 32) {
 		throw new Error("name, password format error")
 	}

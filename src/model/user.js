@@ -6,13 +6,12 @@ import { query } from '../lib/dbConnection'
  * @return {Promise}
  */
 
-const User = {}
-User.getUser = async function(id) {
-	return await query('SELECT * FROM user WHERE userId =?', [userId])
+const getUser = async function(id) {
+	return await query('SELECT * FROM user WHERE id =?', [id])
 };
 
-User.createUser = async function(name, password) {
-	return await query('INSERT INTO tbl_name (name, password) VALUES(?, ?)', [name, password])
+const createUser = async function(name, password) {
+	return await query('INSERT INTO user (name, password) VALUES(?, ?)', [name, password])
 };
 
 export { getUser, createUser }

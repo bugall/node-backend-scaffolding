@@ -3,25 +3,25 @@ import { dbConfig } from '../../config/index'
 import Promise from 'bluebird'
 
 const pool = mysql.createPool({
-	connectionLimit: dbConfig.connectionLimit,
-	host: dbConfig.host,
-	user: dbConfig.user,
-	password: dbConfig.password,
-	port: dbConfig.port,
-	database: dbConfig.database
+	connectionLimit: dbConfig.mysql.connectionLimit,
+	host: dbConfig.mysql.host,
+	user: dbConfig.mysql.user,
+	password: dbConfig.mysql.password,
+	port: dbConfig.mysql.port,
+	database: dbConfig.mysql.database
 });
+
+console.log(dbConfig)
 /**
  * Run database query
  * @param  {String} query
  * @param  {Object} [params]
  * @return {Promise}
  */
-
 const getConnection = () => {
 	return new Promise( (resolve, reject) => {
 		pool.getConnection( (err, connection)  => {
 			if (err) {
-				connection.release();
 				reject(err)
 			} else {
 				resolve(connection)
@@ -31,6 +31,7 @@ const getConnection = () => {
 }
 
 const query = async function(query, params) {
+	console.log('Sql---->:', query)
 	params = params || {};
 	const conn = await getConnection()
 
@@ -40,7 +41,7 @@ const query = async function(query, params) {
 				conn.release();
 				reject(err)
 			} else {
-				resolve(result)
+				resolve(results)
 			}
 		})
 	})

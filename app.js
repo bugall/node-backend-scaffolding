@@ -1,6 +1,7 @@
 'use strict'
+
 require('babel-core/register')({
-	  presets: ['latest'],
+	presets: ['latest'],
 })
 require('babel-polyfill')
 
