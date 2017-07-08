@@ -1,9 +1,6 @@
 import log4js from 'log4js'
 import logConfig from '../../config'
 
-const configTemplate = {
-    level = []
-}
 log4js.configure({
     appenders: {
         debug: {
@@ -50,7 +47,7 @@ log4js.configure({
     }
 })
 
-export default class Log {
+export default class {
     constructor() {
     }
     async debug(msg) {

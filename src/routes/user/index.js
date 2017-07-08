@@ -18,5 +18,12 @@ router.get('/:id', userController.getUserById)
  */
 router.post('/', userController.createUser)
 
+/**
+ * @description 检测用户的账号密码是否正确
+ * @param  {String} username 账号名(不超过20个字符)
+ * @param  {String} password 密码(不超过32个字符)
+ * @return {Boolean} success false | true 是否存在
+ */
+router.post('/login', userController.checkUserPassword)
 export default router
 

@@ -6,7 +6,7 @@ import { query } from '../lib/dbConnection'
  * @return {Promise}
  */
 
-const getUser = async function(id) {
+const getUserById = async function(id) {
 	return await query('SELECT * FROM user WHERE id =?', [id])
 };
 
@@ -14,6 +14,14 @@ const createUser = async function(name, password) {
 	return await query('INSERT INTO user (name, password) VALUES(?, ?)', [name, password])
 };
 
-const userModel = { getUser, createUser }
+const getUserInfoByUsername = async function(username) {
+	return await query('SELECT password FROM user WHERE name = ? limit 1' , [username])
+}
+
+const userModel = { 
+	getUserById, 
+	createUser,
+	getUserInfoByUsername,
+}
 
 export default userModel
