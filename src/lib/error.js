@@ -10,7 +10,7 @@ export default class Error {
     }
     async proce(ctx, next, type) {
         ctx.body = errorCode[type]
-        this.log.error(`log=error;type=${type};${ctx.path};${ctx.method};${ctx.request.query};${ctx.request.body};${ctx.request.params}`)
+        this.log.error(`log=routes;type=${type};${ctx.path};${ctx.method};${ctx.request.query};${ctx.request.body};${ctx.request.params}`)
         next()
     }
 }

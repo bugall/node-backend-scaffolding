@@ -1,6 +1,7 @@
 import mysql from 'mysql'
 import { dbConfig } from '../../config/index'
 import Promise from 'bluebird'
+import Log from './log'
 
 const pool = mysql.createPool({
 	connectionLimit: dbConfig.mysql.connectionLimit,
@@ -10,8 +11,8 @@ const pool = mysql.createPool({
 	port: dbConfig.mysql.port,
 	database: dbConfig.mysql.database
 });
+const log = new Log()
 
-console.log(dbConfig)
 /**
  * Run database query
  * @param  {String} query
@@ -24,6 +25,7 @@ const getConnection = () => {
 			if (err) {
 				reject(err)
 			} else {
+				this.log.info(`log=lib;model=dbConnection;method=getConnection;msg=get connection`)
 				resolve(connection)
 			}
 		})
@@ -31,7 +33,6 @@ const getConnection = () => {
 }
 
 const query = async function(query, params) {
-	console.log('Sql---->:', query)
 	params = params || {};
 	const conn = await getConnection()
 
@@ -42,6 +43,7 @@ const query = async function(query, params) {
 				reject(err)
 			} else {
 				resolve(results)
+				this.log.info(`log=lib;model=dbConnection;method=query;info=${query}${params}`)
 			}
 		})
 	})

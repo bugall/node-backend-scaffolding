@@ -13,7 +13,7 @@ export default class UserController {
     async getUserById(ctx, next) {
         const userId = ctx.params.id
 	    if (isNaN(userId)) {
-		    this.error(ctx, next, 'FORMAT_ERROR')
+		    this.error.proce(ctx, next, 'FORMAT_ERROR')
 	    }
 	    const data = await User.getUser(userId)
 	    ctx.body = {
@@ -24,7 +24,7 @@ export default class UserController {
     async createUser(ctx, next) {
         const { name, password } = ctx.request.body
 	    if (name.length > 100 && password.length > 32) {
-            this.Error(ctx, next, 'FORMAT_ERROR')
+            this.error.proce(ctx, next, 'FORMAT_ERROR')
 	    }
 	    const newUserId = await User.createUser(name, password)
 	    ctx.body = {
