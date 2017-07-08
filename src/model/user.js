@@ -14,4 +14,6 @@ const createUser = async function(name, password) {
 	return await query('INSERT INTO user (name, password) VALUES(?, ?)', [name, password])
 };
 
-export { getUser, createUser }
+const userModel = { getUser, createUser }
+
+export default userModel
