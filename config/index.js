@@ -13,4 +13,8 @@ const server = {
 	port: 3000
 }
 
-export { dbConfig, server}
+const logConfig = {
+	path: '/var/log'
+}
+
+export { dbConfig, server, logConfig}
