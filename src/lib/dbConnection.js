@@ -25,7 +25,7 @@ const getConnection = () => {
 			if (err) {
 				reject(err)
 			} else {
-				this.log.info(`log=lib;model=dbConnection;method=getConnection;msg=get connection`)
+				log.info(`log=lib;model=dbConnection;method=getConnection;msg=get connection`)
 				resolve(connection)
 			}
 		})
@@ -43,7 +43,7 @@ const query = async function(query, params) {
 				reject(err)
 			} else {
 				resolve(results)
-				this.log.info(`log=lib;model=dbConnection;method=query;info=${query}${params}`)
+				log.info(`log=lib;model=dbConnection;method=query;info=${query}${params}`)
 			}
 		})
 	})
