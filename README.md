@@ -6,6 +6,8 @@
 Node.js  5.8.0
 更多依赖信息查看项目的package.json文件
 
+-----
+
 ### 组件
 语法检查： eslint
 文档：apidoc
@@ -18,11 +20,12 @@ javascript版本：es6
 测试断言: assert
 database: mysql
 
+----
+
 ### 如果启动
 开发调试：npm start
 测试：npm test
-
 生产部署：make online
 测试部署：make test
 
-### 
+----
