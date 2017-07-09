@@ -3,6 +3,7 @@ require('babel-core/register')({
 	presets: ['latest'],
 })
 require('babel-polyfill')
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 before(function(done) {
 	console.log('ready to test')

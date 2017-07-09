@@ -5,6 +5,7 @@ import _ from 'lodash'
 export default class UserController {
   constructor() {}
   async getUserById(ctx) {
+    console.log('test in')
     const userId = ctx.params.id
     if (isNaN(userId)) {
       throw new Error('FORMAT_ERROR')
