@@ -11,6 +11,6 @@ const app = require('./src/bin/app')
 const server = http.createServer(app.callback())
 server.listen(serverConfig.port)
 server.on('listening', () => {
-	console.log(`🌐  listening on port 💻  ${serverConfig.port} in development mode`)
+	console.log(`🌐  listening on port 💻  ${serverConfig.port} in ${process.env.NODE_ENV} mode`)
 })
 module.exports = app
