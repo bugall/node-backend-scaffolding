@@ -3,9 +3,13 @@ import sinon from 'sinon'
 import userModel from '../../../src/routes/user/user.model'
 import userLib from '../../../src/routes/user/user.lib'
 
-before(function(done) {
+let getUserStub = null
+let createUserStub = null
+let getUserByUsernameStub = null
+
+before( (done) => {
   // Stub getUserById
-  const getUserStub = sinon.stub(userModel, 'getUserById')
+  getUserStub = sinon.stub(userModel, 'getUserById')
   getUserStub.withArgs(1).returns({
     name: 'bugall',
     password: 'bugall-password'
@@ -13,12 +17,12 @@ before(function(done) {
   getUserStub.withArgs('string').returns({})
 
   // Stub createUser
-  const createUserStub = sinon.stub(userModel, 'createUser')
+  createUserStub = sinon.stub(userModel, 'createUser')
   createUserStub.withArgs('bugall-two', userLib.passwordEncrypt('bugall-two-password')).returns({ "insertId": 1 })
   createUserStub.withArgs('bugall', userLib.passwordEncrypt('password-password')).returns({})
 
   // Stub getUserInfoByUsername
-  const getUserByUsernameStub = sinon.stub(userModel, 'getUserInfoByUsername')
+  getUserByUsernameStub = sinon.stub(userModel, 'getUserInfoByUsername')
   getUserByUsernameStub.withArgs('bugall').returns([{ id: 1, name: 'bugall', password: 'bugall-password' }])
   getUserByUsernameStub.withArgs('bugall-two').returns([])
 	done()
@@ -64,4 +68,11 @@ describe('Create user', () => {
     }
     assert.equal(errorMsg, 'USERNAME_HAS_USED')
   }) 
+})
+
+after( (done) => {
+  createUserStub.restore()
+  getUserStub.restore()
+  getUserByUsernameStub.restore()
+  done()
 })

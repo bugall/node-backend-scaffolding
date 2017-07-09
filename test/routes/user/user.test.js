@@ -4,6 +4,6 @@ import sinon from 'sinon'
 describe('User Controller', () => {
 	require('./user.controller.test')
 })
-describe('User Model', () => {
-  require('./user.model.test')
+describe('User Lib', () => {
+  require('./user.lib.test')
 })
