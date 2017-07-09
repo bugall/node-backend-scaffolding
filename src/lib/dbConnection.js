@@ -14,12 +14,6 @@ const pool = mysql.createPool({
 })
 const log = new Log()
 
-/**
- * Run database query
- * @param  {String} query
- * @param  {Object} [params]
- * @return {Promise}
- */
 const getConnection = () => {
   return new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
@@ -33,11 +27,11 @@ const getConnection = () => {
   })
 }
 
-const query = async function(queryContent, params) {
+const exec = async function(queryContent, params) {
   const conn = await getConnection()
-
+  // eslint-disable-next-line
   return new Promise((resolve, reject) => {
-    conn.query(query, params, (err, results) => {
+    conn.query(queryContent, params, (err, results) => {
       if (err) {
         conn.release()
         reject(err)
@@ -49,4 +43,4 @@ const query = async function(queryContent, params) {
   })
 }
 
-export { query }
+export { exec }
