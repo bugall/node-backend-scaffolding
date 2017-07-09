@@ -9,8 +9,8 @@ before(function(done) {
 	done()
 })
 
-describe('Model Test', function() {
-	require('./models/user.test')
+describe('Routes Test', function() {
+	require('./routes/user/user.test')
 })
 
 after(function(done) {

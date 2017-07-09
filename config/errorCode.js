@@ -8,5 +8,8 @@ export default {
     }, USER_NOT_EXSIT: {
         msg: '用户名不存在',
         code: 3010
+    }, USERNAME_HAS_USED: {
+        msg: '用户名已被使用',
+        code: 3020
     }
 }
