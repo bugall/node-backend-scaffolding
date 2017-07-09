@@ -1,7 +1,7 @@
 import Router from 'koa-router'
 import UserController from './user.controller'
 const userController = new UserController()
-const router = Router()
+const router = new Router()
 
 /**
  * @description 获取用户信息

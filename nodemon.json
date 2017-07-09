@@ -3,7 +3,7 @@
     "./src"
   ],
   "ext": "js jsx html json",
-  "exec":"npm run eslint && node",
+  "exec":"npm run eslint && node server.js",
   "env": {
     "DEBUG":"app:*"
   }

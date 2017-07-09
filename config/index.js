@@ -1,20 +1,12 @@
-const dbConfig = {
-	"mysql": {
-		"host" : "localhost",
-		"port" : 3306,
-		"user" : "root",
-		"password" : "nijiaoa",
-		"database" : "test",
-		"connectionLimit" : 100
-	}
+import development from './development'
+import product from './product'
+
+let config = null
+
+if (process.env.NODE_ENV === 'development') {
+  config = development
+} else if (process.env.NODE_ENV === 'product') {
+  config = product
 }
 
-const server = {
-	port: 3000
-}
-
-const logConfig = {
-	path: '/var/log'
-}
-
-export { dbConfig, server, logConfig}
+export default config

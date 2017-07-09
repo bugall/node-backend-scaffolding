@@ -8,7 +8,7 @@
     "eslint": "./node_modules/.bin/eslint src",
     "start": "npm install && npm run server",
     "server": "./node_modules/.bin/nodemon",
-    "doc": "apidoc -i doc -o doc_content",
+    "doc": "./node_modules/.bin/apidoc -i doc -o doc_content",
     "cron": "nodemon server/cron"
   },
   "repository": {
