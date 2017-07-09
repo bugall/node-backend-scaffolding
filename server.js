@@ -10,7 +10,7 @@ process.env.PORT = process.env.PORT || serverConfig.port;
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const http = require('http')
-const app = require('./src/bin/dev')
+const app = require('./src/bin/app')
 const server = http.createServer(app.callback())
 server.listen(process.env.PORT)
 server.on('listening', () => {

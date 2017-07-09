@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "start": "node app.js"
+    "eslint": "./node_modules/.bin/eslint src",
+    "start": "npm install && npm run server",
+    "server": "./node_modules/.bin/nodemon",
+    "doc": "apidoc -i doc -o doc_content",
+    "cron": "nodemon server/cron"
   },
   "repository": {
     "type": "git",
@@ -33,9 +37,13 @@
     "sinon": "^2.3.6"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-preset-es2017": "^6.24.1",
     "chai": "^4.0.2",
+    "eslint": "^4.2.0",
+    "eslint-plugin-babel": "^4.1.1",
     "log4js": "^2.0.0",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0"
   }
 }

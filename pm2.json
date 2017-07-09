@@ -1,0 +1,20 @@
+{
+  "apps": [{
+    "name": "mocha-sinon",
+    "script": "app.js",
+    "cwd": "/var/www/mocha-sinon",
+    "exec_mode": "cluster",
+    "instances": 2,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "args": [],
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "env_test": {
+      "NODE_ENV": "development",
+      "DEBUG": "app:*",
+      "DEBUG_FD": "1"
+    }
+  }]
+}
