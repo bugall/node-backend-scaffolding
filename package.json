@@ -37,6 +37,7 @@
     "sinon": "^2.3.6"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "babel-eslint": "^7.2.3",
     "babel-preset-es2017": "^6.24.1",
     "chai": "^4.0.2",
