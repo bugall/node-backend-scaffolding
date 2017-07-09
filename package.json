@@ -25,26 +25,22 @@
     "babel-core": "^6.25.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1",
     "bluebird": "^3.5.0",
-    "chai": "^4.0.2",
     "koa": "2.0.0",
     "koa-bodyparser": "3.1.0",
     "koa-qs": "^2.0.0",
     "koa-router": "^7.2.1",
-    "mocha": "^3.4.2",
-    "mysql": "^2.13.0",
-    "sinon": "^2.3.6"
+    "mysql": "^2.13.0"
   },
   "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "sinon": "^2.3.6",    
     "apidoc": "^0.17.6",
     "babel-eslint": "^7.2.3",
-    "babel-preset-es2017": "^6.24.1",
-    "chai": "^4.0.2",
     "eslint": "^4.2.0",
     "eslint-plugin-babel": "^4.1.1",
     "log4js": "^2.0.0",
-    "mocha": "^3.4.2",
     "nodemon": "^1.11.0"
   }
 }
