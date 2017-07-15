@@ -29,6 +29,15 @@ before( (done) => {
 })
 
 describe('Get user by id', () => {
+  const obj = {
+    say: function(name) {
+      console.log(name)
+    }
+  }
+  const spy = sinon.spy(obj, 'say')
+  console.log('create spy')
+  obj.say('fuck')
+  console.log('celled fuck')
   const UserController = require('../../../src/routes/user/user.controller').default
   const userController = new UserController()
 
