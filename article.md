@@ -124,7 +124,38 @@ it('should pass object with correct values to save only once', function() {
 # Sinon的实现原理
 ## spies
 ```
+const sinon = {
+  spyObjs: {},
+  spy: function(obj, method) {
+    const self = this;
+    this.spyObjs['spy#:' + (Object.keys(self.spyObjs).length + 1)] = {}
+    this.proxy(obj, method);
+  }, proxy: function(obj, method) {
+    const descriptor = Object.getOwnPropertyDescriptor(obj, method);
+    const delegateFlag = 'spy#:' + Object.keys(sinon.spyObjs).length;
+    this.spyObjs[delegateFlag] = {
+      delegateValue: descriptor.value,
+      delegateObject: obj
+    }
+    Object.defineProperty(obj, method, Object.getOwnPropertyDescriptor(this, 'invoke'))
+  }, invoke: function(name) {
+    console.log('参数%s, 被调用了', name)
+    const delegateFlag = 'spy#:' + Object.keys(sinon.spyObjs).length;
+    sinon.spyObjs[delegateFlag].delegateValue.apply(sinon.spyObjs[delegateFlag].delegateObject)
+  }
+}
 
+var testFlag = {
+  sayHello: function(name) {
+    console.log('Hello:%s', name)
+  }, whoAmI: function() {
+    this.sayHello('bugall')
+    console.log('Who am i')
+  }
+}
+sinon.spy(testFlag, 'whoAmI');
+
+testFlag.whoAmI('bugall')
 ```
 ## stub
 ## mock
