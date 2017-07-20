@@ -22,11 +22,6 @@ Sinon 入门,看这篇文章就够了
 ## stub的概念
 他们拥有`spies`的所有功能，不是监视某个函数的调用情况，而是完全取代了这个函数。换句话说，当使用`spies`时，原始函数仍然运行，但是当使用`stub`时，函数将不具有原始的功能，而是替换后的函数。
 
-<!-- 这使得存根可以用于许多任务，如：
-替换Ajax或其他外部调用，这些测试使测试缓慢且难于编写。
-根据函数输出触发不同的代码路径
-测试异常情况，例如抛出异常时会发生什么？
-我们可以用类似间谍的方式制作存根… -->
 ## mock的概念
 `mock`与`stub`的功能一样都是用来替换指定的函数，如果你想替换掉一个对象中的多个方法，这时`mock`就可以发挥作用了，但是如果仅仅是替换对象中的一个函数，那么`stub`更加简单易用，当我们使用`mock`的时候应该十分小心，因为大量的替换原有代码逻辑，会导致test变的`脆弱`，
 
@@ -65,13 +60,72 @@ it('should pass object with correct values to save', function() {
   sinon.assert.calledWith(save, expectedUser);
 });
 ```
-
-我们可以检查多少次被调用函数使用sinon.assert.callcount，sinon.assert.calledonce，sinon.assert.notcalled，和类似的。例如，以下是如何
 ## stub
-## mock
+存根就像间谍，除了它们替换目标功能。它们还可以包含自定义行为，例如返回值,或抛出异常。他们甚至可以自动调用作为参数提供的任何回调函数。
 
+存根有几个常用的用途：
+
+- 您可以使用它们来代替有问题的代码段
+- 您可以使用它们来触发不会触发的代码路径，例如错误处理
+- 您可以使用它们来帮助测试异步代码更容易
+- 存根可用于替代有问题的代码，即使写入测试困难的代码。这通常是外部网络连接，数据库或其他非JavaScript引起的。这些问题是它们经常需要手动设置。例如，在运行测试之前，我们需要填写一个带有测试数据的数据库，这使得运行和写入更复杂。
+```
+it('should pass object with correct values to save', function() {
+  var save = sinon.stub(Database, 'save');
+  var info = { name: 'test' };
+  var expectedUser = {
+    name: info.name,
+    nameLowercase: info.name.toLowerCase()
+  };
+
+  setupNewUser(info, function() { });
+
+  save.restore();
+  sinon.assert.calledWith(save, expectedUser);
+});
+
+```
+通过用stub替换与数据库相关的功能，我们不再需要实际的数据库进行测试。 几乎任何情况下，类似的方法都可以用于其他难以测试的代码。
+
+存根也可用于触发不同的代码路径。 如果我们测试的代码调用另一个函数，我们有时需要测试它在异常条件下的行为, 我们可以使用存根从代码中触发错误:
+```
+it('should pass the error into the callback if save fails', function() {
+  var expectedError = new Error('oops');
+  var save = sinon.stub(Database, 'save');
+  save.throws(expectedError);
+  var callback = sinon.spy();
+
+  setupNewUser({ name: 'foo' }, callback);
+
+  save.restore();
+  sinon.assert.calledWith(callback, expectedError);
+});
+```
+## mock
+主要用于当你存根的时候想验证多个具体的行为时
+
+例如，以下是我们如何使用`mock`验证更具体的数据库保存方案：
+```
+it('should pass object with correct values to save only once', function() {
+  var info = { name: 'test' };
+  var expectedUser = {
+    name: info.name,
+    nameLowercase: info.name.toLowerCase()
+  };
+  var database = sinon.mock(Database);
+  database.expects('save').once().withArgs(expectedUser);
+
+  setupNewUser(info, function() { });
+
+  database.verify();
+  database.restore();
+});
+```
 # Sinon的实现原理
 ## spies
+```
+
+```
 ## stub
 ## mock
 
