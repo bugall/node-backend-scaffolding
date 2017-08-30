@@ -1,9 +1,4 @@
 'use strict'
-require('babel-core/register')({
-	presets: ['latest'],
-})
-require('babel-polyfill')
-
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 const serverConfig = require('./config').default.server
 const http = require('http')

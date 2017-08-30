@@ -7,7 +7,12 @@
   },
   "globals": {
     "_": true,
-    "moment": true
+    "moment": true,
+    "process": true,
+    "describe": true,
+    "before": true,
+    "after": true,
+    "it": true
   },
   "plugins": [
     "babel"
@@ -111,7 +116,6 @@
     "no-octal-escape": 2,
     "no-octal": 2,
     "no-param-reassign": 1, // `2` is recommended and actually defaults to `[2, {"props": false}]`
-    "no-process-env": 1, // `2` is recommended
     "no-proto": 2,
     "no-redeclare": [2, {"builtinGlobals": true}], // `2` is recommended and actually defaults to `[2, {"builtinGlobals": false}]`
     "no-return-assign": [2, "except-parens"],
