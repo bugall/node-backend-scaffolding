@@ -18,8 +18,9 @@ export default class UserController {
 
   async createUser(ctx) {
     const { username, password } = ctx.request.body
-    if (username.length > 100 || password.length > 32) {
+    if (username.length >= 100 || password.length >= 32) {
       throw new Error('FORMAT_ERROR')
+      console.log()
     }
     // 判断用户名是否已经被使用
     // 为了演示，这里就简单处理，常规业务这里有四种种实现方式
@@ -31,7 +32,7 @@ export default class UserController {
     if (!_.isEmpty(userInfo)) {
       throw new Error('USERNAME_HAS_USED')
     }
-    const newUserInfo = await User.createUser(username, userLib.passwordEncrypt(password))
+    const newUserInfo = await User.RemoveUser(username, userLib.passwordEncrypt(password))
     ctx.body = {
       code: 200,
       data: { userId: newUserInfo.insertId },
