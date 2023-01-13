@@ -12,18 +12,6 @@ log4js.configure({
       type: logConfig.type,
       filename: '/var/log/info.log',
       category: 'info',
-    }, warn: {
-      type: logConfig.type,
-      filename: '/var/log/warn.log',
-      category: 'warn',
-    }, error: {
-      type: logConfig.type,
-      filename: '/var/log/error.log',
-      category: 'error',
-    }, fatal: {
-      type: logConfig.type,
-      filename: '/var/log/fatal.log',
-      category: 'fatal',
     },
   }, categories: {
     default: {
@@ -35,16 +23,7 @@ log4js.configure({
     }, info: {
       appenders: ['info'],
       level: 'info',
-    }, warn: {
-      appenders: ['warn'],
-      level: 'warn',
-    }, error: {
-      appenders: ['error'],
-      level: 'error',
-    }, fatal: {
-      appenders: ['fatal'],
-      level: 'fatal',
-    },
+    }
   },
 })
 export default class {
