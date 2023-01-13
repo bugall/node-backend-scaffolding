@@ -6,7 +6,8 @@ const dbConfig = config.dbConfig
 
 const pool = mysql.createPool({
   connectionLimit: dbConfig.mysql.connectionLimit,
-  host: dbConfig.mysql.host,
+  psm: dbConfig.mysql.psm,
+  idlTime: 10,
   user: dbConfig.mysql.user,
   password: dbConfig.mysql.password,
   port: dbConfig.mysql.port,
